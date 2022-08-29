@@ -1,13 +1,18 @@
-import logo from "./logo.svg";
-import dice1 from "./Common/Images/dice1.png";
-import dice2 from "./Common/Images/dice2.png";
-import dice3 from "./Common/Images/dice3.png";
-import dice4 from "./Common/Images/dice4.png";
-import dice5 from "./Common/Images/dice5.png";
-import dice6 from "./Common/Images/dice6.png";
+import React, { useState } from "react";
 import "./App.css";
 
 const App = () => {
+  const [diceOne, setDiceOne] = useState(1);
+  const [diceTwo, setDiceTwo] = useState(1);
+
+  const randomNumber = () => {
+    return Math.floor(Math.random() * 6) + 1;
+  };
+
+  const handleRoll = () => {
+    setDiceOne(randomNumber());
+    setDiceTwo(randomNumber());
+  };
 
   return (
     <div className="App">
@@ -17,15 +22,25 @@ const App = () => {
       <div className="Dice-container">
         <div>
           <h3>Player 1</h3>
-          <img src={dice1} className="Dice-logo" alt="dice1" />
+          <img
+            src={require(`./Common/Images/dice${diceOne}.png`)}
+            className="Dice-logo"
+            alt="dice1"
+          />
         </div>
         <div>
           <h3>Player 2</h3>
-          <img src={dice1} className="Dice-logo" alt="dice1" />
+          <img
+            src={require(`./Common/Images/dice${diceTwo}.png`)}
+            className="Dice-logo"
+            alt="dice1"
+          />
         </div>
       </div>
       <div>
-        <button className="RollButton">Roll the Dice</button>
+        <button className="RollButton" onClick={handleRoll}>
+          Roll the Dice
+        </button>
       </div>
     </div>
   );
