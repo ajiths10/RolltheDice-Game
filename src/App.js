@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DiceComponent from "./Common/component/DiceComponent";
 import "./App.css";
 
 const App = () => {
@@ -24,27 +25,15 @@ const App = () => {
             : diceOne > diceTwo
             ? "Player 1 Wins"
             : diceOne === diceTwo
-            ? "Math tie"
+            ? "Math Tie"
             : "Player 2 Wins"}
         </h1>
       </div>
       <div className="Dice-container">
-        <div>
-          <h3>Player 1</h3>
-          <img
-            src={require(`./Common/Images/dice${diceOne}.png`)}
-            className="Dice-logo"
-            alt="dice1"
-          />
-        </div>
-        <div>
-          <h3>Player 2</h3>
-          <img
-            src={require(`./Common/Images/dice${diceTwo}.png`)}
-            className="Dice-logo"
-            alt="dice2"
-          />
-        </div>
+        <>
+          <DiceComponent dice={diceOne} playerLabel="Player 1" />
+          <DiceComponent dice={diceTwo} playerLabel="Player 2" />
+        </>
       </div>
       <div>
         <button className="RollButton" onClick={handleRoll}>
