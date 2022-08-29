@@ -1,3 +1,44 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  font-family: "poppins", sans-serif;
+  flex-flow: column;
+  gap: 2rem;
+}
+
+.Dice-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row;
+  gap: 2rem;
+}
+
+.heading-conatiner {
+  height: 12vh;
+  width: 100%;
+  background-color: blueviolet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Dice-logo {
+  height: 40vh;
+  width: 40vh;
+}
+.RollButton {
+  border: none;
+  border-radius: 0.5rem;
+  background-color: blueviolet;
+  color: white;
+  font-family: inherit;
+  height: 5vh;
+  width: 15vh;
+}
+
+.RollButton:hover {
+  background-color: rgb(121, 39, 197);
+  cursor: pointer;
 }
