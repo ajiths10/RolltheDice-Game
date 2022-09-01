@@ -11,7 +11,7 @@ const App = () => {
   const [diceTwo, setDiceTwo] = useState(1);
   const [initialStart, setInitialStart] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [formikValues, setFormikValues] = useState('')
+  const [formikValues, setFormikValues] = useState("");
 
   const randomNumber = () => {
     return Math.floor(Math.random() * 6) + 1;
@@ -41,22 +41,30 @@ const App = () => {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-      <FormComponent fieldFunction={fieldFunction}/>
+      <FormComponent fieldFunction={fieldFunction} />
       <div className="heading-conatiner">
         <h1>
           {!initialStart
             ? "Lets Play"
             : diceOne > diceTwo
-            ? "Player 1 Wins"
+            ? `${formikValues.player1.toUpperCase()} Wins`
             : diceOne === diceTwo
             ? "Math Tie"
-            : "Player 2 Wins"}
+            : `${formikValues.player2.toUpperCase()} Wins`}
         </h1>
       </div>
       <div className="Dice-container">
         <>
-          <DiceComponent dice={diceOne} playerLabel={formikValues.player1} key={1}/>
-          <DiceComponent dice={diceTwo} playerLabel={formikValues.player2} key={2}/>
+          <DiceComponent
+            dice={diceOne}
+            playerLabel={formikValues.player1}
+            key={1}
+          />
+          <DiceComponent
+            dice={diceTwo}
+            playerLabel={formikValues.player2}
+            key={2}
+          />
         </>
       </div>
       <div>

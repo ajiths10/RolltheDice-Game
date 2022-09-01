@@ -35,9 +35,9 @@ const FormComponent = ({ fieldFunction }) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-        console.log(values);
-        fieldFunction(values);
-        setInitialRun(false);
+      console.log(values);
+      fieldFunction(values);
+      setInitialRun(false);
     },
   });
   const handleClose = () => {};
