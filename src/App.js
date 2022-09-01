@@ -4,6 +4,7 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import "./App.css";
+import FormComponent from "./Common/component/formComponent";
 
 const App = () => {
   const [diceOne, setDiceOne] = useState(1);
@@ -35,6 +36,7 @@ const App = () => {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
+      <FormComponent />
       <div className="heading-conatiner">
         <h1>
           {!initialStart
