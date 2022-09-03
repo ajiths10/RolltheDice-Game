@@ -8,10 +8,13 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
+import Grid from "@mui/material/Grid";
 import DialogContent from "@mui/material/DialogContent";
+import Typography from "@mui/material/Typography";
+import Checkbox from "@mui/material/Checkbox";
 import DialogTitle from "@mui/material/DialogTitle";
 import { purple } from "@mui/material/colors";
-import './style.css'
+import "./style.css";
 
 const theme = createTheme({
   palette: {
@@ -27,12 +30,14 @@ const FormComponent = ({ fieldFunction }) => {
   const validationSchema = yup.object({
     player1: yup.string("Enter your email").min(2).required("Name is required"),
     player2: yup.string("Enter your email").min(2).required("Name is required"),
+    agree_terms: yup.boolean().oneOf([true], "required"),
   });
 
   const formik = useFormik({
     initialValues: {
       player1: "",
       player2: "",
+      agree_terms: false,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -45,17 +50,16 @@ const FormComponent = ({ fieldFunction }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Dialog
-        open={isInitialRun}
-        onClose={handleClose}
-      >
-
-        <Container sx={{ height: "50vh" }} style={{ backgroundColor: "white",color:"blueviolet" }}>
-        <DialogTitle>Payer Details</DialogTitle>
+      <Dialog open={isInitialRun} onClose={handleClose}>
+        <Container
+          sx={{ height: "auto" }}
+          style={{ backgroundColor: "white", color: "blueviolet" }}
+        >
+          <DialogTitle>Payer Details</DialogTitle>
           <DialogContent>
             <TextField
               margin="normal"
-              className = "textfield"
+              className="textfield"
               required
               fullWidth
               id="player1"
@@ -82,6 +86,27 @@ const FormComponent = ({ fieldFunction }) => {
               error={formik.touched.player2 && Boolean(formik.errors.player2)}
               helperText={formik.touched.player2 && formik.errors.player2}
             />
+          </DialogContent>
+          <DialogContent>
+            <Grid item xs={12}>
+              <Checkbox
+                value="allowExtraEmails"
+                color="primary"
+                name="agree_terms"
+                onChange={formik.handleChange}
+              />
+              Agree terms and conditions.
+            </Grid>
+            <Typography
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+                color: "red",
+              }}
+            >
+              {formik.touched.agree_terms && formik.errors.agree_terms}
+            </Typography>
           </DialogContent>
           <DialogActions>
             <Button
