@@ -11,6 +11,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { purple } from "@mui/material/colors";
+import './style.css'
 
 const theme = createTheme({
   palette: {
@@ -44,20 +45,21 @@ const FormComponent = ({ fieldFunction }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Dialog open={isInitialRun} onClose={handleClose}>
-        <DialogTitle>Payer Details</DialogTitle>
+      <Dialog
+        open={isInitialRun}
+        onClose={handleClose}
+      >
 
-        <Container
-          sx={{ height: "50vh" }}
-          style={{ backgroundColor: "#2f2f2f" }}
-        >
+        <Container sx={{ height: "50vh" }} style={{ backgroundColor: "white",color:"blueviolet" }}>
+        <DialogTitle>Payer Details</DialogTitle>
           <DialogContent>
             <TextField
               margin="normal"
+              className = "textfield"
               required
               fullWidth
               id="player1"
-              label="Player1 Name"
+              label="Enter Player1 Name"
               name="player1"
               autoComplete="player1"
               autoFocus
@@ -71,7 +73,7 @@ const FormComponent = ({ fieldFunction }) => {
               required
               fullWidth
               name="player2"
-              label="Player2 Name"
+              label="Enter Player2 Name"
               type="player2"
               id="player2"
               autoComplete="player2"
