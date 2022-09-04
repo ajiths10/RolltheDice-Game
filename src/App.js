@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DiceComponent from "./Common/component/DiceComponent";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -6,13 +6,15 @@ import Button from "@mui/material/Button";
 import "./App.css";
 import FormComponent from "./Common/component/formComponent";
 import winner from "./Common/Images/winner.png";
+import PartyPops from "./Common/component/PartyPops";
 
 const App = () => {
   const [diceOne, setDiceOne] = useState(1);
   const [diceTwo, setDiceTwo] = useState(1);
-  const [initialStart, setInitialStart] = useState(false);
+  const [initialStart, setInitialStart] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [formikValues, setFormikValues] = useState("");
+  const [isPartyPopup, setPartyPopup] = useState(false);
 
   const randomNumber = () => {
     return Math.floor(Math.random() * 6) + 1;
@@ -25,7 +27,7 @@ const App = () => {
       setIsLoading(false);
       setDiceOne(randomNumber());
       setDiceTwo(randomNumber());
-      setInitialStart(true);
+      setInitialStart(false);
     }, 1000);
   };
 
@@ -33,8 +35,15 @@ const App = () => {
     setFormikValues(payload);
   };
 
+  useEffect(() => {
+    if (initialStart) return setPartyPopup(false);
+    if (diceOne === diceTwo) return setPartyPopup(false);
+    return setPartyPopup(true);
+  }, [initialStart, diceOne, diceTwo]);
+
   return (
     <div className="App">
+      <PartyPops action={isPartyPopup} />
       <Backdrop
         sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={isLoading}
@@ -45,7 +54,7 @@ const App = () => {
       <FormComponent fieldFunction={fieldFunction} />
       <div className="heading-conatiner">
         <h1>
-          {!initialStart ? (
+          {initialStart ? (
             "Lets Play"
           ) : diceOne > diceTwo ? (
             <>
