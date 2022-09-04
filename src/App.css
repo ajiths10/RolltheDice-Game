@@ -5,6 +5,8 @@
   font-family: "poppins", sans-serif;
   flex-flow: column;
   gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 .Dice-container {
@@ -17,11 +19,13 @@
 
 .heading-conatiner {
   height: 12vh;
-  width: 100%;
-  background-color: blueviolet;
+  width: auto;
+  background-color: #9c27b0;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .Dice-logo {
@@ -41,4 +45,8 @@
 .RollButton:hover {
   background-color: rgb(121, 39, 197);
   cursor: pointer;
+}
+.winner{
+  height: 6vh;
+  width: 6vh;
 }

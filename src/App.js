@@ -5,6 +5,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import "./App.css";
 import FormComponent from "./Common/component/formComponent";
+import winner from "./Common/Images/winner.png";
 
 const App = () => {
   const [diceOne, setDiceOne] = useState(1);
@@ -29,8 +30,8 @@ const App = () => {
   };
 
   const fieldFunction = (payload) => {
-    setFormikValues(payload)
-  }
+    setFormikValues(payload);
+  };
 
   return (
     <div className="App">
@@ -44,13 +45,23 @@ const App = () => {
       <FormComponent fieldFunction={fieldFunction} />
       <div className="heading-conatiner">
         <h1>
-          {!initialStart
-            ? "Lets Play"
-            : diceOne > diceTwo
-            ? `${formikValues.player1.toUpperCase()} Wins`
-            : diceOne === diceTwo
-            ? "Math Tie"
-            : `${formikValues.player2.toUpperCase()} Wins`}
+          {!initialStart ? (
+            "Lets Play"
+          ) : diceOne > diceTwo ? (
+            <>
+              <img src={winner} className="winner" alt="winnerlogo" />
+              &nbsp; {formikValues.player1.toUpperCase()} Wins &nbsp;
+              <img src={winner} className="winner" alt="winnerlogo" />
+            </>
+          ) : diceOne === diceTwo ? (
+            "Math Tie"
+          ) : (
+            <>
+              <img src={winner} className="winner" alt="winnerlogo" />
+              &nbsp; {formikValues.player2.toUpperCase()} Wins &nbsp;
+              <img src={winner} className="winner" alt="winnerlogo" />
+            </>
+          )}
         </h1>
       </div>
       <div className="Dice-container">

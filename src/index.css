@@ -1,7 +1,10 @@
 body {
-  background-color: #282c34;
+  background-image: linear-gradient(to bottom right,  rgb(149, 59, 59),blueviolet);
   color: white;
   font-family: "poppins", sans-serif;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 
