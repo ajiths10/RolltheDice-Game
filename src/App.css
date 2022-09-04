@@ -35,16 +35,20 @@
 .RollButton {
   border: none;
   border-radius: 0.5rem;
-  background-color: blueviolet;
-  color: white;
+  background-color: rgb(245, 234, 255);
+  color: black;
   font-family: inherit;
   height: 5vh;
   width: 15vh;
+  height: 8vh;
+  width: 25vh;
+  font-weight: bold;
 }
 
 .RollButton:hover {
-  background-color: rgb(121, 39, 197);
+  background-color: rgb(211, 164, 255);
   cursor: pointer;
+ 
 }
 .winner{
   height: 6vh;
