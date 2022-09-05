@@ -3,6 +3,7 @@ import "./App.css";
 import FormComponent from "./component/formComponent";
 import { Route, Routes } from "react-router-dom";
 import Dice from "./component/Dice/index";
+import Home from "./component/Home";
 
 const App = () => {
   const [formikValues, setFormikValues] = useState("");
@@ -15,6 +16,7 @@ const App = () => {
     <div className="App">
       <FormComponent fieldFunction={fieldFunction} />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/dice" element={<Dice formikValues={formikValues} />} />
       </Routes>
     </div>
