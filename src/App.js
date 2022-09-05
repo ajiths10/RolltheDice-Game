@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import DiceComponent from "./Common/component/DiceComponent";
+import DiceComponent from "./component/Dice/DiceComponent";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import "./App.css";
-import FormComponent from "./Common/component/formComponent";
+import FormComponent from "./component/formComponent";
 import winner from "./Common/Images/winner.png";
-import PartyPops from "./Common/component/PartyPops";
+import PartyPops from "./component/common/PartyPops";
 
 const App = () => {
   const [diceOne, setDiceOne] = useState(1);
