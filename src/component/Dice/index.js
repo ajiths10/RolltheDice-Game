@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import DiceComponent from "./DiceComponent";
 import winner from "../../Common/Images/winner.png";
 import PartyPops from "../common/PartyPops";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
+import Button from "@mui/material/Button";
 import "./dice.css";
 
-const DiceGame = () => {
+const DiceGame = (props) => {
   const [diceOne, setDiceOne] = useState(1);
   const [diceTwo, setDiceTwo] = useState(1);
   const [initialStart, setInitialStart] = useState(true);
@@ -50,7 +53,11 @@ const DiceGame = () => {
           ) : diceOne > diceTwo ? (
             <>
               <img src={winner} className="winner" alt="winnerlogo" />
-              &nbsp; {props.formikValues.player1.toUpperCase()} Wins &nbsp;
+              &nbsp;{" "}
+              {props.formikValues
+                ? props.formikValues.player1.toUpperCase()
+                : ""}{" "}
+              Wins &nbsp;
               <img src={winner} className="winner" alt="winnerlogo" />
             </>
           ) : diceOne === diceTwo ? (
@@ -58,7 +65,11 @@ const DiceGame = () => {
           ) : (
             <>
               <img src={winner} className="winner" alt="winnerlogo" />
-              &nbsp; {props.formikValues.player2.toUpperCase()} Wins &nbsp;
+              &nbsp;{" "}
+              {props.formikValues
+                ? props.formikValues.player2.toUpperCase()
+                : ""}{" "}
+              Wins &nbsp;
               <img src={winner} className="winner" alt="winnerlogo" />
             </>
           )}
@@ -68,12 +79,12 @@ const DiceGame = () => {
         <>
           <DiceComponent
             dice={diceOne}
-            playerLabel={props.formikValues.player1}
+            playerLabel={props.formikValues ? props.formikValues.player1 : ""}
             key={1}
           />
           <DiceComponent
             dice={diceTwo}
-            playerLabel={props.props.formikValues.player2}
+            playerLabel={props.formikValues ? props.formikValues.player2 : ""}
             key={2}
           />
         </>
